@@ -7,9 +7,10 @@ import useInternalStore from '@/store';
 import FloatingEdge from './Edge/FloatingEdge';
 import FloatingConnectionLine from './Edge/FloatingConnectionLine';
 import EventPanel from './Events/EventPanel';
+import CustomPanel from './BDI/CustomPanel';
 
 
-const Canvas = ({setRfInstance}) => {
+const Canvas = ({ setRfInstance }) => {
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
@@ -20,8 +21,10 @@ const Canvas = ({setRfInstance}) => {
     const nodeTypes = useMemo(() => ({ LO: LOCard }), []);
     const edgeTypes = useMemo(() => ({ floating: FloatingEdge }), [])
 
-    const [selectedObjectEvent,setSelectedObjectEvent] = useState('')
- 
+    const [selectedObjectEvent, setSelectedObjectEvent] = useState('')
+    const [bdiSelectedObjectEvent, bdiSetSelectedObjectEvent] = useState('')
+
+
     const onPaneClick = (event) => {
         if (addNodeFlag) {
             setAddNodeFlag(false)
@@ -44,9 +47,15 @@ const Canvas = ({setRfInstance}) => {
         }
     }
 
-    const test = (event, node) => {
-        if(event.target.id.includes('logisticEvent')) {
+    const nodeClick = (event, node) => {
+
+
+        if (event.target.id.includes('logisticEvent')) {
             setSelectedObjectEvent(node.data.uri)
+        }
+        if (event.target.id.includes('BDI')) {
+            console.log(node.data.uri)
+            bdiSetSelectedObjectEvent(node.data.uri)
         }
     }
 
@@ -67,7 +76,7 @@ const Canvas = ({setRfInstance}) => {
                 ref={rfCanvasRef}
                 style={{ cursor: (addNodeFlag ? "cell" : "") }}
                 onInit={setRfInstance}
-                onNodeClick={test}
+                onNodeClick={nodeClick}
             >
                 <MiniMap />
                 <Controls />
@@ -77,6 +86,10 @@ const Canvas = ({setRfInstance}) => {
             <EventPanel
                 selectedObject={selectedObjectEvent}
                 setSelectedObject={setSelectedObjectEvent}
+            />
+            <CustomPanel
+                selectedObject={bdiSelectedObjectEvent}
+                setSelectedObject={bdiSetSelectedObjectEvent}
             />
         </div>
     );
