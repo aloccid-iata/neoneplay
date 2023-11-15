@@ -41,7 +41,7 @@ const UploadSaveNetwork = (props) => {
 
         <>
             <div className='has-tooltip '>
-                <span className='tooltip rounded shadow-lg p-1 bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-200 mt-12 -ml-10  duration-200 transition-colors' >Download/Restore Network</span>
+                <span className='tooltip rounded shadow-lg p-1 bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-200 mt-12 -ml-10  duration-200 transition-colors' >Save/Restore Network</span>
                 <button onClick={() => { setSeeSettings(!seeSettings) }}
                     className="p-2 bg-violet-400 hover:bg-violet-600 active:bg-violet-800 dark:bg-violet-500 dark:hover:bg-violet-600 dark:active:bg-violet-800 rounded-full mx-1 my-auto text-white  duration-200 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -56,15 +56,15 @@ const UploadSaveNetwork = (props) => {
                             <svg className="fill-white" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" /></svg>
                         </button>
                         <div className="block bg-slate-200 p-2  m-2 ml-0 w-full rounded-3xl ">
-                            <span className="text-xl font-medium pl-1">Download Network file</span>
+                            <span className="text-xl font-medium pl-1">Save network file</span>
                             <div className="flex justify-center">
                                 <button onClick={saveNetwork} className="w-[30%] mt-2 p-2 bg-violet-400 hover:bg-violet-500 active:bg-violet-600 transition-color duration-200 text-white rounded-full">
-                                    Download
+                                    Save
                                 </button>
                             </div>
                         </div>
                         <div className="block bg-slate-200 p-2  m-2 ml-0 w-full rounded-3xl ">
-                            <span className="text-xl font-medium pl-1">Restore Network file</span>
+                            <span className="text-xl font-medium pl-1">Restore network file</span>
                             <div>
                                 <input type="file" onChange={uploadNetwork} id="first_name" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
                             </div>
