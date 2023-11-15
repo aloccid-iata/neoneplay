@@ -35,9 +35,9 @@ function CustomPanel({ selectedObject, setSelectedObject }) {
 
     const sendToCustoms = async () => {
         let body_obj = {
-            "involvesMilestone": "Start",
-            "UUID": "db91de 756ca",
-            "involvesTimeClassification": "Estimated",
+            "involvesMilestone": "Customs information",
+            "UUID": "6a435d44-e63a-46ae-afcb-fbcd255cfc13",
+            "involvesTimeClassification": "Actual",
             "involvesTimestamp": "2023-10-25T13:44:06+02:00",
             "involvesBusinessIdentifier": selectedObject
         }
