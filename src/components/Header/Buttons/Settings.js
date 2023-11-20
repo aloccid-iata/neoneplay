@@ -7,7 +7,7 @@ const Settings = () => {
 
     const [org, setOrg] = useState("");
     const [host, setHost] = useState("");
-
+    const [protocol, setProtocol] = useState("");
     const [token, setToken] = useState("");
     const [color, setColor] = useState("#ffffff")
 
@@ -38,6 +38,7 @@ const Settings = () => {
                             <div className="mt-2">
                                 <div className="flex w-full bg-slate-300 p-2 rounded-t-2xl mb-2">
                                     <span className="flex-1 w-40">Organization</span>
+                                    <span className="flex-1 w-20">Protocol</span>
                                     <span className="flex-1 w-40">Host</span>
                                     <span className="flex-none">Action</span>
                                 </div>
@@ -46,6 +47,7 @@ const Settings = () => {
                                         return (
                                             <li key={index} className="list-none border-b-2 border-violet-300 py-1 flex gap-2 ">
                                                 <span className="flex-1 w-16 pl-1">{server.org_name}</span>
+                                                <span className="flex-1 w-16">{server.protocol}</span>
                                                 <span className="flex-1 w-32">{server.host}</span>
                                                 <div className="">
                                                     {/* Color Picker */}
@@ -64,6 +66,8 @@ const Settings = () => {
                                     <div className="py-2 grid grid-cols-2 gap-2">
                                         <span>Organization Name</span>
                                         <input type="text" className=" rounded-xl px-4 focus:outline-none" value={org} onChange={e => setOrg(e.target.value)} />
+                                        <span>Protocol</span>
+                                        <input type="text" className="rounded-xl px-4 focus:outline-none" value={protocol} onChange={e => setProtocol(e.target.value)} />
                                         <span>Host</span>
                                         <input type="text" className="rounded-xl px-4 focus:outline-none" value={host} onChange={e => setHost(e.target.value)} />
                                         <span>Token</span>
@@ -72,7 +76,7 @@ const Settings = () => {
                                         <input type="color" name="" id="" style={{ margin: "auto", width: "100%" }} value={color} onChange={e => setColor(e.target.value)} />
                                     </div>
                                     <button className=" bg-violet-300 text-white font-light p-1 rounded-full w-full hover:bg-violet-400 active:bg-violet-500 transition-color duration-200"
-                                        onClick={() => { addServer(org, host, token, color); setOrg(""); setHost(""), setToken(""), setColor("#ffffff") }}>
+                                        onClick={() => { addServer(org, host, token, color, protocol); setOrg(""); setProtocol(""); setHost(""), setToken(""), setColor("#ffffff") }}>
                                         <svg className="fill-white mx-auto" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M440-200v-240H200v-80h240v-240h80v240h240v80H520v240h-80Z" /></svg>
                                     </button>
                                 </div>
