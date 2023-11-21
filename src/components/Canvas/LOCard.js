@@ -30,6 +30,36 @@ const getTypeString = (loType) => {
     return ''
 }
 
+function resolveGraphById(jsonLd, id) {
+    if (!jsonLd["@graph"]) {
+        return jsonLd;
+    }
+
+    // Find the element with the matching @id
+    const mainElement = jsonLd["@graph"].find(element => element["@id"] === id);
+    if (!mainElement) {
+        throw new Error("Element with the provided @id not found");
+    }
+
+    // Function to replace links with corresponding nodes
+    function replaceLinksWithNodes(obj) {
+        for (const key in obj) {
+            if (obj[key] && typeof obj[key] === 'object' && obj[key]["@id"]) {
+                // Find the linked node
+                const linkedNode = jsonLd["@graph"].find(element => element["@id"] === obj[key]["@id"]);
+                if (linkedNode) {
+                    obj[key] = {...linkedNode};
+                }
+            }
+        }
+    }
+
+    // Recursively replace links in the main element
+    replaceLinksWithNodes(mainElement);
+
+    return mainElement;
+}
+
 
 const LOCard = ({ id, data, isConnectable }) => {
 
@@ -83,6 +113,7 @@ const LOCard = ({ id, data, isConnectable }) => {
         prom.catch(() => { setIs404(true) })
         let res = await prom;
         let body = await res.json()
+        body = resolveGraphById(body, url)
         let header_obj = {};
         res.headers.forEach((val, key) => { header_obj[key] = val })
         if (!cardData || parseInt(cardData.headers["revision"]) != parseInt(header_obj["revision"])) {
