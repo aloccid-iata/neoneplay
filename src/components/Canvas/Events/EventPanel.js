@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import useInternalStore from "@/store";
+import Select from 'react-select';
+
 
 function EventPanel({ selectedObject, setSelectedObject }) {
     const [showEventPanel, setShowEventPanel] = useState(false)
     const [eventDate, setEventDate] = useState('')
     const [eventCode, setEventCode] = useState('')
     const [eventName, setEventName] = useState('')
-    const [eventTimeType, setEventTimeType] = useState('')
+    const [eventTimeType, setEventTimeType] = useState({})
     const [company, setCompany] = useState('')
     const [listLE, setListLE] = useState([])
     const { servers } = useInternalStore()
 
-
+    const eventTimeTypes = [{ label: 'ACTUAL', value: 'ACTUAL' }, { label: 'ESTIMATED', value: 'ESTIMATED' },
+    { label: 'EXPECTED', value: 'EXPECTED' }, { label: 'PLANNED', value: 'PLANNED' },
+    { label: 'REQUESTED', value: 'REQUESTED' }]
 
     useEffect(() => {
         if (selectedObject && selectedObject != '') {
@@ -35,6 +39,36 @@ function EventPanel({ selectedObject, setSelectedObject }) {
         setEventTimeType('')
     }
 
+    function resolveGraphById(jsonLd, id) {
+        if (!jsonLd["@graph"]) {
+            return jsonLd;
+        }
+    
+        // Find the element with the matching @id
+        const mainElement = jsonLd["@graph"].find(element => element["@id"] === id);
+        if (!mainElement) {
+            throw new Error("Element with the provided @id not found");
+        }
+    
+        // Function to replace links with corresponding nodes
+        function replaceLinksWithNodes(obj) {
+            for (const key in obj) {
+                if (obj[key] && typeof obj[key] === 'object' && obj[key]["@id"]) {
+                    // Find the linked node
+                    const linkedNode = jsonLd["@graph"].find(element => element["@id"] === obj[key]["@id"]);
+                    if (linkedNode) {
+                        obj[key] = {...linkedNode};
+                    }
+                }
+            }
+        }
+    
+        // Recursively replace links in the main element
+        replaceLinksWithNodes(mainElement);
+    
+        return mainElement;
+    }
+
     async function readLE(selectedObject) {
         let token;
         servers.map((server, index) => {
@@ -53,15 +87,20 @@ function EventPanel({ selectedObject, setSelectedObject }) {
         })
         let res = await prom;
         let body = await res.json()
+        console.log(body)
         if (res.status == 200) {
             let eventList = []
-            if (body["@graph"]){
-                body["@graph"].forEach((event) => {
-                    eventList.push(event)
+            if (body["@graph"]) {
+                body["@graph"].forEach((event,) => {
+                    if(!event['@id'].includes('neone:')){
+                        eventList.push(resolveGraphById(body, event['@id']))
+
+                    }
                 })
             } else {
                 eventList.push(body)
             }
+            console.log(eventList)
             if (eventList.length > 1) {
                 eventList.sort(function (a, b) {
                     a['eventDate']['@value']
@@ -75,9 +114,9 @@ function EventPanel({ selectedObject, setSelectedObject }) {
                     list.push(
                         <tr key={key}>
                             <td className="border border-slate-600 text-center">{event['eventName']}</td>
-                            <td className="border border-slate-600 text-center">{event['eventCode']}</td>
+                            <td className="border border-slate-600 text-center">{event['eventCode']['code']}</td>
                             <td className="border border-slate-600 text-center">{event['eventDate']['@value'].replace('T', ' ').replace('Z', '')}</td>
-                            <td className="border border-slate-600 text-center">{event['eventTimeType']}</td>
+                            <td className="border border-slate-600 text-center">{event['eventTimeType']['@id'].split("#").pop()}</td>
                         </tr>
                     )
                 })
@@ -102,13 +141,19 @@ function EventPanel({ selectedObject, setSelectedObject }) {
                 "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
                 "@value": eventDateISO
             },
-            "cargo:eventCode": eventCode,
+            "cargo:eventCode": {
+                "@type": "cargo:CodeListElement",
+                "cargo:code": eventCode,
+                "cargo:codeListName": "Event code list"
+            },
             "cargo:eventName": eventName,
-            "cargo:eventTimeType": eventTimeType,
+            "cargo:eventTimeType": {
+                "@id": "cargo:" + eventTimeType.value
+            },
             "cargo:linkedObject": {
                 "@id": selectedObject
             },
-            "cargo:recordedBy": {
+            "cargo:recordingOrganization": {
                 "@id": company
             }
         }
@@ -178,7 +223,11 @@ function EventPanel({ selectedObject, setSelectedObject }) {
                                     <span>Event Date</span>
                                     <input type="datetime-local" className="rounded-xl px-4 focus:outline-none" value={eventDate} onChange={e => setEventDate(e.target.value)} />
                                     <span>Event Time Type</span>
-                                    <input type="text" className="rounded-xl px-4 focus:outline-none" value={eventTimeType} onChange={e => setEventTimeType(e.target.value)} />
+                                    <Select options={eventTimeTypes}
+                                        isClearable={true}
+                                        isSearchable={true}
+                                        onChange={(item) => { if (item != null) { setEventTimeType(item) } }}
+                                    />
                                     <span>Recording Company (URI)</span>
                                     <input type="text" className="rounded-xl px-4 focus:outline-none" value={company} onChange={e => setCompany(e.target.value)} />
                                 </div>
