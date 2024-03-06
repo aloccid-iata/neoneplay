@@ -51,12 +51,23 @@ function resolveGraphById(jsonLd, id) {
                     obj[key] = {...linkedNode};
                 }
             }
+            if (obj[key] && Array.isArray(obj[key])) {
+                // Find the linked node
+                obj[key].forEach(arrayObj => {
+                    const linkedNode = jsonLd["@graph"].find(element => element["@id"] === arrayObj["@id"]);
+                    if (linkedNode) { 
+                        for (const field in linkedNode){
+                            arrayObj[field] = linkedNode[field];    
+                        }
+                    }
+                    replaceLinksWithNodes(arrayObj)
+                })
+            }
         }
     }
 
     // Recursively replace links in the main element
     replaceLinksWithNodes(mainElement);
-
     return mainElement;
 }
 
@@ -155,11 +166,12 @@ const LOCard = ({ id, data, isConnectable }) => {
             prom.catch(() => { setIs404(true) })
             let res = await prom;
             let body = await res.json()
-            let apiNameSpace = "https://onerecord.iata.org/ns/api";
-            let hasChangeRequest = apiNameSpace + "#hasChangeRequest";
-            let hasChange = apiNameSpace + "#hasChange";
-            let hasRevision = apiNameSpace + "#hasRevision";
-            let isRequestedAt = apiNameSpace + "#isRequestedAt";
+            body = resolveGraphById(body, data.uri + "/audit-trail")
+            //IMPORTANT: Need add a library to deal with JSONLD
+            let hasChangeRequest = "hasChangeRequest";
+            let hasChange = "hasChange";
+            let hasRevision = "hasRevision";
+            let isRequestedAt = "isRequestedAt";
             let value = "@value"
             let changeRequest;
             if (Array.isArray(body[hasChangeRequest])) {

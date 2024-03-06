@@ -60,12 +60,23 @@ function EventPanel({ selectedObject, setSelectedObject }) {
                         obj[key] = {...linkedNode};
                     }
                 }
+                if (obj[key] && Array.isArray(obj[key])) {
+                    // Find the linked node
+                    obj[key].forEach(arrayObj => {
+                        const linkedNode = jsonLd["@graph"].find(element => element["@id"] === arrayObj["@id"]);
+                        if (linkedNode) { 
+                            for (const field in linkedNode){
+                                arrayObj[field] = linkedNode[field];    
+                            }
+                        }
+                        replaceLinksWithNodes(arrayObj)
+                    })
+                }
             }
         }
     
         // Recursively replace links in the main element
         replaceLinksWithNodes(mainElement);
-    
         return mainElement;
     }
 
@@ -87,18 +98,16 @@ function EventPanel({ selectedObject, setSelectedObject }) {
         })
         let res = await prom;
         let body = await res.json()
-        console.log(body)
         if (res.status == 200) {
             let eventList = []
-            if (body["@graph"]) {
-                body["@graph"].forEach((event,) => {
-                    if(!event['@id'].includes('neone:')){
-                        eventList.push(resolveGraphById(body, event['@id']))
-
-                    }
-                })
+            let apiOntology = 'https://onerecord.iata.org/ns/api'
+            let hasItem = apiOntology + '#hasItem'
+            body = resolveGraphById(body, selectedObject + "/logistics-events")
+            
+            if (Array.isArray(body[hasItem])) {
+                body[hasItem].forEach(element => eventList.push(element))
             } else {
-                eventList.push(body)
+                eventList.push(body[hasItem])
             }
             console.log(eventList)
             if (eventList.length > 1) {
@@ -110,15 +119,17 @@ function EventPanel({ selectedObject, setSelectedObject }) {
             let list = []
             if (eventList && eventList.length > 0) {
                 eventList.forEach((event) => {
-                    let key = Math.random().toString(36).slice(2, 7);
-                    list.push(
-                        <tr key={key}>
-                            <td className="border border-slate-600 text-center">{event['eventName']}</td>
-                            <td className="border border-slate-600 text-center">{event['eventCode']['code']}</td>
-                            <td className="border border-slate-600 text-center">{event['eventDate']['@value'].replace('T', ' ').replace('Z', '')}</td>
-                            <td className="border border-slate-600 text-center">{event['eventTimeType']['@id'].split("#").pop()}</td>
-                        </tr>
-                    )
+                    if (event) {
+                        let key = Math.random().toString(36).slice(2, 7);
+                        list.push(
+                            <tr key={key}>
+                                <td className="border border-slate-600 text-center">{event['eventName']}</td>
+                                <td className="border border-slate-600 text-center">{event['eventCode']['code']}</td>
+                                <td className="border border-slate-600 text-center">{event['eventDate']['@value'].replace('T', ' ').replace('Z', '')}</td>
+                                <td className="border border-slate-600 text-center">{event['eventTimeType']['@id'].split("#").pop()}</td>
+                            </tr>
+                        )
+                    }
                 })
                 setListLE(list)
             }
