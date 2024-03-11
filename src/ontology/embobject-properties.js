@@ -2,6 +2,14 @@ const embobject_properties = {
     "ActivitySequence": {
         "properties": ['activity','sequenceNumber']
     },
+//Experimental: Embedded ProposedActivity
+    "ProposedActivity": {
+        "properties": ['sequenceNumber','proposedStartTime','proposedEndTime','proposedLocation','activityType','involvedPhysicalLogisticsObjects','partialActivityType','partialActivityFor']
+    },
+//Experimental: Embedded ProposedTransportMovement
+    "ProposedTransportMovement": {
+        "properties": ['sequenceNumber','proposedStartTime','proposedEndTime','proposedLocation','activityType','involvedPhysicalLogisticsObjects','partialActivityType','partialActivityFor','departureLocation','arrivalLocation','modeQualifier']
+    },
     "Address": {
         "properties": ['addressCode','addressCodeType','cityCode','cityName','country','postalCode','postOfficeBox','regionCode','regionName','streetAddressLines']
     },
