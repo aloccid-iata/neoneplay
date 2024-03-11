@@ -83,6 +83,274 @@ const iri_description = {
         "Label": "BookingShipment",
         "Description": "Simplified shipment object that is to be used only for the distribution scope where only a subset of data is known priori to operational phase."
     },
+// Experimental: HandlingServiceRequest
+    ":HandlingServiceRequest": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#HandlingServiceRequest",
+        "Type": "Class",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#HandlingServiceRequest",
+        "Label": "HandlingServiceRequest",
+        "Description": "EXPERIMENTAL"
+    },
+// Experimental: HandlingServiceOption
+    ":HandlingServiceOption": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#HandlingServiceOption",
+        "Type": "Class",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#HandlingServiceOption",
+        "Label": "HandlingServiceOption",
+        "Description": "EXPERIMENTAL"
+    },
+// Experimental: HandlingService
+    ":HandlingService": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#HandlingService",
+        "Type": "Class",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#HandlingService",
+        "Label": "HandlingService",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: Embedded ProposedActivity
+    ":ProposedActivity": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#ProposedActivity",
+        "Type": "EmbeddedObject",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#ProposedActivity",
+        "Label": "ProposedActivity",
+        "Description": "EXPERIMENTAL: Embedded object to create a sequence of proposed Activities in the context of a Service"
+    },
+//Experimental: Embedded ProposedTransportMovement
+    ":ProposedTransportMovement": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#ProposedTransportMovement",
+        "Type": "EmbeddedObject",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#ProposedTransportMovement",
+        "Label": "ProposedTransportMovement",
+        "Description": "EXPERIMENTAL: Embedded object to create a sequence of proposed TransportMovements in the context of a Service"
+    },
+
+//Experimental: New Object Properties
+    
+//Experimental: requestFor
+    ":requestFor": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#requestFor",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#PhysicalLogisticsObject",
+        "Label": "requestFor",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: requestForShipment
+    ":requestForShipment": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#requestForShipment",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Shipment",
+        "Label": "requestForShipment",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: requestor: Party
+    ":requestor": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#requestor",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Party",
+        "Label": "requestor",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: provider: Party
+    ":provider": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#provider",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Party",
+        "Label": "provider",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: providerServiceOption: HandlingServiceOption 
+    ":providerServiceOption": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#providerServiceOption",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#HandlingServiceOption",
+        "Label": "providerServiceOption",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: issuedHandlingService: HandlingService 
+    ":issuedHandlingService": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#issuedHandlingService",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#HandlingService",
+        "Label": "issuedHandlingService",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: requestedActivities (n): ProposedActivity
+    ":requestedActivities": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#requestedActivities",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#ProposedActivity",
+        "Label": "requestedActivities",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: providerProduct: CodeListElement 
+    ":providerProduct": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#providerProduct",
+        "Type": "DataProperty",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
+        "Label": "providerProduct",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: proposedStartTime: dateTime
+    ":proposedStartTime": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#proposedStartTime",
+        "Type": "DataProperty",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "Label": "proposedStartTime",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: proposedEndTime: dateTime
+    ":proposedEndTime": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#proposedEndTime",
+        "Type": "DataProperty",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "Label": "proposedEndTime",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: proposedLocation: Location
+    ":proposedLocation": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#proposedLocation",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Location",
+        "Label": "proposedLocation",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: activityType*: ActivityType
+    ":activityType": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#activityType",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#ActivityType",
+        "Label": "activityType",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: ActivityType
+    ":ActivityType": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#ActivityType",
+        "Type": "Class",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#ActivityType",
+        "Label": "ActivityType",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: ActionType
+    ":ActionType": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#ActionType",
+        "Type": "Class",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#ActionType",
+        "Label": "ActionType",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: involvedPhysicalLogisticsObjects (n): PhysicalLogisticsObject
+    ":involvedPhysicalLogisticsObjects": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#involvedPhysicalLogisticsObjects",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#PhysicalLogisticsObject",
+        "Label": "involvedPhysicalLogisticsObjects",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: partialActivityType*: ActionType
+    ":partialActivityType": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#partialActivityType",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#ActionType",
+        "Label": "partialActivityType",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: partialActivityFor: LogisticsActivity
+    ":partialActivityFor": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#partialActivityFor",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#LogisticsActivity",
+        "Label": "partialActivityFor",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: forServiceRequest: HandlingServiceRequest
+    ":forServiceRequest": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#forServiceRequest",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#HandlingServiceRequest",
+        "Label": "forServiceRequest",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: forHandlingService: HandlingServiceOption
+    ":forHandlingService": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#forHandlingService",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#HandlingServiceOption",
+        "Label": "forHandlingService",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: serviceFor (n): PhysicalLogisticsObject
+    ":serviceFor": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#serviceFor",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#PhysicalLogisticsObject",
+        "Label": "serviceFor",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: statusBookingOption: { BOOKABLE, BOOKED, EXPIRED,  NONBOOKABLE, NOT_BOOKABLE, ON_REQUEST,  QUEUED }
+    ":statusBookingOption": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#statusBookingOption",
+        "Type": "DataProperty",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
+        "Label": "statusBookingOption",
+        "Description": "EXPERIMENTAL { BOOKABLE, BOOKED, EXPIRED,  NONBOOKABLE, NOT_BOOKABLE, ON_REQUEST,  QUEUED }"
+    },
+//Experimental: offerValidFrom: dateTime
+    ":offerValidFrom": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#offerValidFrom",
+        "Type": "DataProperty",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "Label": "offerValidFrom",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: offerValidTo: dateTime
+    ":offerValidTo": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#offerValidTo",
+        "Type": "DataProperty",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "Label": "offerValidTo",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: requestMatch: boolean
+    ":requestMatch": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#requestMatch",
+        "Type": "DataProperty",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#boolean",
+        "Label": "requestMatch",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: offeredActivities (n): ProposedActivity
+    ":offeredActivities": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#offeredActivities",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#ProposedActivity",
+        "Label": "offeredActivities",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: fromServiceOption: HandlingServiceOption
+    ":fromServiceOption": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#fromServiceOption",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#HandlingServiceOption",
+        "Label": "fromServiceOption",
+        "Description": "EXPERIMENTAL"
+    },
+//Experimental: serviceForShipment: Shipment
+    ":serviceForShipment": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#serviceForShipment",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Shipment",
+        "Label": "serviceForShipment",
+        "Description": "EXPERIMENTAL"
+    },    
+//Experimental: bookingStatus: { CONFIRMED, DELETED, REJECTED, QUEUED }
+    ":bookingStatus": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#bookingStatus",
+        "Type": "DataProperty",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
+        "Label": "bookingStatus",
+        "Description": "EXPERIMENTAL { CONFIRMED, DELETED, REJECTED, QUEUED }"
+    },
+
     ":BookingTimes": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#BookingTimes",
         "Type": "Class",
@@ -639,7 +907,7 @@ const iri_description = {
     ":activity": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#activity",
         "Type": "ObjectProperty",
-        "TypeIRI": "https://onerecord.iata.org/ns/cargo#LogisticsActivity",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#activity",
         "Label": "activity",
         "Description": "Reference to the Activity that is performed as part of a Service"
     },
