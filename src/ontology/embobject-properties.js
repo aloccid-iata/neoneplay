@@ -52,7 +52,7 @@ const embobject_properties = {
     },
     "VolumetricWeight": {
         "properties": ['chargeableWeight','conversionFactor']
-    }
+    },
     "ULDSpecificPiece": {
         "properties": ['dryIceWeight','pieceGroupGrossWeight','uldContourCode','uldType','pieceGroupCount','pieceGroupId','slac','uldSerialNumber']
     }
