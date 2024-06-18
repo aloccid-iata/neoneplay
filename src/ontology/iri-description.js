@@ -4198,7 +4198,77 @@ const iri_description = {
         "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "weightValuationIndicator",
         "Description": "payment for the Weight/Valuation will be made at origin (prepaid) or at destination (collect)"
-    }
+    },
+    ":maxTemperature": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#maxTemperature",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Value",
+        "Label": "maxTemperature",
+        "Description": "Maximum temperature of the range"
+    },
+    ":minTemperature": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#minTemperature",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Value",
+        "Label": "minTemperature",
+        "Description": "Minimum temperature of the range"
+    },
+    ":TemperatureInstructions": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#TemperatureInstructions",
+        "Type": "EmbeddedObject",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#TemperatureInstructions",
+        "Label": "TemperatureInstructions",
+        "Description": "TemperatureInstructions details"
+    },
+    ":ULDSpecificPiece": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#ULDSpecificPiece",
+        "Type": "EmbeddedObject",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#ULDSpecificPiece",
+        "Label": "ULDSpecificPiece",
+        "Description": "ULDSpecificPiece details"
+    },
+    ":pieceGroupId": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#pieceGroupId",
+        "Type": "DataProperty",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#integer",
+        "Label": "pieceGroupId",
+        "Description": "pieceGroupId"
+    },
+    ":pieceGroupCount": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#pieceGroupCount",
+        "Type": "DataProperty",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#integer",
+        "Label": "pieceGroupCount",
+        "Description": "pieceGroupCount"
+    },
+    ":dryIceWeight": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#dryIceWeight",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Value",
+        "Label": "dryIceWeight",
+        "Description": "dryIceWeight"
+    },
+    ":pieceGroupGrossWeight": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#pieceGroupGrossWeight",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Value",
+        "Label": "pieceGroupGrossWeight",
+        "Description": "pieceGroupGrossWeight"
+    },
+    ":uldContourCode": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#uldContourCode",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#CodeListElement",
+        "Label": "uldContourCode",
+        "Description": "uldContourCode"
+    },
+    ":uldType": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#uldType",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#CodeListElement",
+        "Label": "uldType",
+        "Description": "uldType"
+    },
 }
 
 export default iri_description;
