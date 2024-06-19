@@ -23,11 +23,16 @@ const IconReload = () => {
 
 
 
-const getTypeString = (loType) => {
-    if (loType && loType.includes('#')) {
-        return loType.split("#").at(-1)
-    }
-    return ''
+const selectType = (loTypes) => {
+    console.log(loTypes)
+    if(Array.isArray(loTypes)){
+        loTypes.forEach(function (element) {
+            if (!element.includes('LogisticsObject')) {
+               loTypes = element; 
+            }
+         })
+        }
+    return loTypes 
 }
 
 function resolveGraphById(jsonLd, id) {
@@ -266,12 +271,9 @@ const LOCard = ({ id, data, isConnectable }) => {
 
                         <div id="header-top-row" className='inline-flex ml-1'>
                             <div className=''><IconProvider objectType={cardData && cardData.body['@type']} className="" /></div>
-                            <span className=' ml-2 font-sans text-2xl mb-1 ml-1 mr-1'>
-                                LO:
-                            </span>
                             <span className='font-semibold text-2xl table-cell align-middle mr-auto'>
                                 <div className="w-[160px] overflow-hidden">
-                                    {cardData && getTypeString(cardData.headers['type'])}
+                                    {cardData && selectType(cardData.body['@type'])}
                                 </div>
                                 {(!cardData && !is404) &&
                                     <div role="status" className='absolute top-[30px] left-[150px] scale-150'>
