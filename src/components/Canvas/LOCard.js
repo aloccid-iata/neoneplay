@@ -24,7 +24,6 @@ const IconReload = () => {
 
 
 const selectType = (loTypes) => {
-    console.log(loTypes)
     if(Array.isArray(loTypes)){
         loTypes.forEach(function (element) {
             if (!element.includes('LogisticsObject')) {
