@@ -4199,19 +4199,12 @@ const iri_description = {
         "Label": "weightValuationIndicator",
         "Description": "payment for the Weight/Valuation will be made at origin (prepaid) or at destination (collect)"
     },
-    ":maxTemperature": {
-        "IRI_full": "https://onerecord.iata.org/ns/cargo#maxTemperature",
-        "Type": "ObjectProperty",
-        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Value",
-        "Label": "maxTemperature",
-        "Description": "Maximum temperature of the range"
-    },
-    ":minTemperature": {
-        "IRI_full": "https://onerecord.iata.org/ns/cargo#minTemperature",
-        "Type": "ObjectProperty",
-        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Value",
-        "Label": "minTemperature",
-        "Description": "Minimum temperature of the range"
+    ":temperatureInstructions": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#temperatureInstructions",
+        "Type": "EmbeddedObject",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#TemperatureInstructions",
+        "Label": "TemperatureInstructions",
+        "Description": "TemperatureInstructions details"
     },
     ":TemperatureInstructions": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#TemperatureInstructions",
@@ -4219,6 +4212,20 @@ const iri_description = {
         "TypeIRI": "https://onerecord.iata.org/ns/cargo#TemperatureInstructions",
         "Label": "TemperatureInstructions",
         "Description": "TemperatureInstructions details"
+    },
+    ":minTemperature": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#minTemperature",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Value",
+        "Label": "minTemperature",
+        "Description": "minTemperature"
+    },
+    ":maxTemperature": {
+        "IRI_full": "https://onerecord.iata.org/ns/cargo#maxTemperature",
+        "Type": "ObjectProperty",
+        "TypeIRI": "https://onerecord.iata.org/ns/cargo#Value",
+        "Label": "maxTemperature",
+        "Description": "maxTemperature"
     },
     ":ULDSpecificPiece": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#ULDSpecificPiece",

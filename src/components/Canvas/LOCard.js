@@ -50,6 +50,7 @@ function resolveGraphById(jsonLd, id) {
                 if (linkedNode) {
                     obj[key] = {...linkedNode};
                 }
+                replaceLinksWithNodes(obj[key])
             }
             if (obj[key] && Array.isArray(obj[key])) {
                 // Find the linked node

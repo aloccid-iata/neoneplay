@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useInternalStore from "@/store";
 import useRFStore from "@/storeRF";
 import useEventListener from "@/hooks/useEventListener";
-import isValidHttpUrl from "@/helpers/isValidHttpUrl";
+import isValidUrl from "@/helpers/isValidUrl";
 
 
 const Searchbar = () => {
@@ -13,7 +13,7 @@ const Searchbar = () => {
 
     const handleSearch = (searchValue) => {
         setSearchbarValue(searchValue);
-        if (isValidHttpUrl(searchValue)) {
+        if (isValidUrl(searchValue)) {
             // if is uri
             setIsUri(true)
         } else {
