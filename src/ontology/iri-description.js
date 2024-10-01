@@ -2158,7 +2158,7 @@ const iri_description = {
     ":amount": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#amount",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "amount",
         "Description": "Amount"
     },
@@ -2249,7 +2249,7 @@ const iri_description = {
     ":billingChargeIdentifier": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#billingChargeIdentifier",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "subTotal",
         "Description": "Subtotal of the charge"
     },
@@ -2396,7 +2396,7 @@ const iri_description = {
     ":commission": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#commission",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "commission",
         "Description": "The commission amount in favour of the Cargo Agent/Associate, applicable for the shipment concerned"
     },
@@ -2606,7 +2606,7 @@ const iri_description = {
     ":destinationCharges": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#destinationCharges",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "destinationCharges",
         "Description": "Charges levied at destination accruing to the last carrier, in destination currency"
     },
@@ -2620,7 +2620,7 @@ const iri_description = {
     ":destinationCurrencyRate": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#destinationCurrencyRate",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "destinationCurrencyRate",
         "Description": "Conversion rate applied"
     },
@@ -2648,7 +2648,7 @@ const iri_description = {
     ":discount": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#discount",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "discount",
         "Description": "This is used as a discount to the \u201cofficial\u201d transportation charge on AWB to arrive at actual selling price"
     },
@@ -2746,7 +2746,7 @@ const iri_description = {
     ":exchangeRate": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#exchangeRate",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "exchangeRate",
         "Description": "The Rate at which the Air Waybill Amount has been multiplied to arrive at the amount of settlement."
     },
@@ -2851,7 +2851,7 @@ const iri_description = {
     ":grandTotal": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#grandTotal",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "grandTotal",
         "Description": "Total price"
     },
@@ -2998,7 +2998,7 @@ const iri_description = {
     ":latitude": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#latitude",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "latitude",
         "Description": "Location latitude - Change of data type to string as of version 1.2"
     },
@@ -3075,7 +3075,7 @@ const iri_description = {
     ":longitude": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#longitude",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "longitude",
         "Description": "Location longitude - Change of data type to string as of version 1.2"
     },
@@ -3117,7 +3117,7 @@ const iri_description = {
     ":maximumQuantity": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#maximumQuantity",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "maximumQuantity",
         "Description": "Maximum quantity"
     },
@@ -3152,7 +3152,7 @@ const iri_description = {
     ":minimumQuantity": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#minimumQuantity",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "minimumQuantity",
         "Description": "Minimum quantity"
     },
@@ -3257,7 +3257,7 @@ const iri_description = {
     ":numericalValue": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#numericalValue",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "numericalValue",
         "Description": "Value"
     },
@@ -3530,7 +3530,7 @@ const iri_description = {
     ":qValueNumeric": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#qValueNumeric",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "qValueNumeric",
         "Description": "Most instances of all packed in one will require the addition of the Q value which  1. Applies to air transport only. (Air)  "
     },
@@ -3544,7 +3544,7 @@ const iri_description = {
     ":quantityForUnitPrice": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#quantityForUnitPrice",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "quantityForUnitPrice",
         "Description": "Product quantity for unit price - e.g. 12 (eggs for one USD 1)"
     },
@@ -3922,7 +3922,7 @@ const iri_description = {
     ":subTotal": {
         "IRI_full": "https://onerecord.iata.org/ns/cargo#subTotal",
         "Type": "DataProperty",
-        "TypeIRI": "http://www.w3.org/2001/XMLSchema#double",
+        "TypeIRI": "http://www.w3.org/2001/XMLSchema#string",
         "Label": "subTotal",
         "Description": "Subtotal of the charge"
     },
